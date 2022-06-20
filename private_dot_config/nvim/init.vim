@@ -5,9 +5,9 @@ set nocompatible
 " ================================================================================
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
-if has('win32' || 'win64')
-    set rtp+=~/AppData/Local/nvim/bundle/Vundle.vim
-    call vundle#begin('~/AppData/Local/nvim/bundle')
+if has('win32') || has('win64')
+    set rtp+=~/AppData/Local/nvim-data/bundle/Vundle.vim
+    call vundle#begin('~/AppData/Local/nvim-data/bundle')
 else
     set rtp+=~/.local/share/nvim/bundle/Vundle.vim
     call vundle#begin('~/.local/share/nvim/bundle')
@@ -75,11 +75,12 @@ let g:ctrlp_show_hidden = 1
 if has('gui_running')
     set guioptions=aegimrL
     colorscheme gruvbox
-    if has('gui_win32') || has('gui_win64')
-        set guifont=Consolas:h9:cANSI
-    else
-        set guifont=Menlo-Regular:h12
-    endif
+    set guifont=Menlo-Regular:h12
+endif
+
+if has('win32') || has('win64')
+    set guifont=Consolas:h9:cANSI
+    colorscheme gruvbox
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -164,7 +165,6 @@ nnoremap <Leader>= 2<C-w>+
 
 nnoremap <Leader>,8 :set tw=80<CR>
 nnoremap <Leader>,0 :set tw=0<CR>
-nnoremap <Leader>,cpp :-1read $HOME/dotfiles/vim/skeleton.cpp<CR>8j
 nnoremap <Leader><Leader> <C-^>
 
 nnoremap H ^
